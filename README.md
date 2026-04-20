@@ -1,5 +1,5 @@
 # cse210-student-template
-This is the starter code for students in CSE 210.
+I got the starter code from CSE 210 (A C# class offered by BYU-I)
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
