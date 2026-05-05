@@ -3,6 +3,7 @@
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "csharp": false
+    "scminput": false,
+    "csharp": true
   }
 }
