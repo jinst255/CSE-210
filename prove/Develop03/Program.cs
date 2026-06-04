@@ -5,6 +5,8 @@ class Program
 {
         static void Main(string[] args)
         {
+            Console.WriteLine(false);
+
             // (Exceeds requirements)
             // I made it so that HideRandomWord() will always choose a word that has not already been hidden. 
 
