@@ -1,0 +1,2 @@
+100
+SimpleGoal|Run Daily|Run a mile every day|100|True
