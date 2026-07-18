@@ -19,10 +19,11 @@ Todo:
 - [x] Fill in AssessRisk() to bucket ACWR into a risk level string
 - [x] Update program output to match the original app design
 
-- [ ] Feed the load history into MLAnomalyDetector.Train()
-- [ ] Fill in Detect() to flag when the latest load deviates from the trained history
-- [ ] Replace placeholder Console.WriteLine values in Program.cs with real values from RiskAssessor/MLAnomalyDetector
-- [ ] Run the full program end-to-end with real CSV data and check the output matches expectations
+Saturday:
+- [x] Feed exercises into AnomalyDetector.CalculateMeanAndStdDev()
+- [x] Fill in FindAnomalies() to flag data points that deviate from the mean by more than 2 std devs
+- [x] Replace placeholder Console.WriteLine values in Program.cs with real values from RiskAssessor/AnomalyDetector
+- [x] Run the full program end-to-end with real CSV data and check the output matches expectations
 */
 
 class Program
@@ -40,9 +41,9 @@ class Program
 
         // Load Data from CSV
         Console.WriteLine("Loading in data...\n");
-        DateTime mostRecentDate = listOfExercises.Min(e => e.GetDate()); // cool lambda function to extract the lastest date in the data
+        DateTime earliestDate = Exercise.GetEarliestDate(listOfExercises);
 
-        Console.WriteLine($"Data since: {mostRecentDate.ToShortDateString()}"); 
+        Console.WriteLine($"Data since: {earliestDate.ToShortDateString()}");
 
 
         // Calculate ACWR and Risk
@@ -57,10 +58,16 @@ class Program
         riskAssessor.AssessRisk();
 
 
-
         // Detect Anomalies
-        MLAnomalyDetector ML = new MLAnomalyDetector();
-        ML.PrintMLAnomalyReport();
+        AnomalyDetector anomalyDetector = new AnomalyDetector();
+        anomalyDetector.CalculateMeanAndStdDev(listOfExercises);
+
+        Console.WriteLine($"Anomaly Detection Results:");
+        Console.WriteLine($"Mean: {anomalyDetector.GetMean()}");
+        Console.WriteLine($"Std Dev: {anomalyDetector.GetStdDev()}");
+        anomalyDetector.FindAnomalies(listOfExercises);
+        anomalyDetector.PrintAnomalyReport();
+
 
     }
     public static List<Exercise> ImportCSV(string _pathToCSV)

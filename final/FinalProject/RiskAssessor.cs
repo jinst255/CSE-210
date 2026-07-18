@@ -8,7 +8,7 @@ class RiskAssessor
 
     public void ComputeLoads(List<Exercise> exercises)
     {
-        DateTime mostRecentDate = exercises.Max(e => e.GetDate()); // cool lambda function to extract the lastest date in the data
+        DateTime mostRecentDate = Exercise.GetMostRecentDate(exercises);
 
         double acuteSum = 0;
         double chronicSum = 0;

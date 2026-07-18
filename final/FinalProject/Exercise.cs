@@ -23,4 +23,13 @@ abstract class Exercise
         return _durationMins;
     }
     public abstract string GetActivityType();
+
+    public static DateTime GetMostRecentDate(List<Exercise> exercises)
+    {
+        return exercises.Max(e => e.GetDate());
+    }
+    public static DateTime GetEarliestDate(List<Exercise> exercises)
+    {
+        return exercises.Min(e => e.GetDate());
+    }
 }
