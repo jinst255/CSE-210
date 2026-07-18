@@ -1,13 +1,16 @@
 abstract class Exercise
 {
-    public DateTime _date;
-    public int _durationMins;
-    public double _avgHeartRate;
-    public int _sleepMins;
+    protected DateTime _date;
+    protected int _durationMins;
+    protected double _avgHeartRate;
+    protected int _sleepMins;
 
-    public Exercise()
+    public Exercise(DateTime date, int durationMins, double avgHeartRate, int sleepMins)
     {
-
+        _date = date;
+        _durationMins = durationMins;
+        _avgHeartRate = avgHeartRate;
+        _sleepMins = sleepMins;
     }
     public abstract double CalculateLoad();
 

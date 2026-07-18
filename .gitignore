@@ -365,6 +365,15 @@ MigrationBackup/
 FodyWeavers.xsd
 
 ##
+## Project-specific
+##
+
+# Personal health data used by final/FinalProject — keep real watch data
+# out of the public repo (see final/FinalProject/Program.cs todo list)
+final/FinalProject/data.csv
+final/FinalProject/data-add-swim.csv
+
+##
 ## Visual studio for Mac
 ##
 
