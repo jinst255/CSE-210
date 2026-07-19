@@ -2,9 +2,9 @@ class RiskAssessor
 {
     double _acuteLoad;
     double _chronicLoad;
-    double _ACWR; // stands for "Acute Chronic Workload Ratio"
+    double _acwr; // stands for "Acute Chronic Workload Ratio"
     string _riskLevel;
-    double _avgSleepMins;
+    // double _avgSleepMins;
 
     public void ComputeLoads(List<Exercise> exercises)
     {
@@ -45,16 +45,16 @@ class RiskAssessor
             return 0; 
         }
 
-        _ACWR = _acuteLoad / _chronicLoad;
-        return _ACWR;
+        _acwr = _acuteLoad / _chronicLoad;
+        return _acwr;
     }
     public void AssessRisk()
     {
-        if (_ACWR < 1.3)
+        if (_acwr < 1.3)
         {
             _riskLevel = "Low — training load is balanced.";
         }
-        else if (_ACWR < 1.8)
+        else if (_acwr < 1.8)
         {
             _riskLevel = "Medium — approaching the injury danger zone. Consider a lighter week.";
         }
@@ -67,6 +67,6 @@ class RiskAssessor
     }
     public double GetACWR()
     {
-        return _ACWR;
+        return _acwr;
     }
 }

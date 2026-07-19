@@ -49,11 +49,11 @@ class Program
         // Calculate ACWR and Risk
         RiskAssessor riskAssessor = new RiskAssessor();
         riskAssessor.ComputeLoads(listOfExercises);
-        double ACWR = riskAssessor.ComputeACWR();
+        double acwr = riskAssessor.ComputeACWR();
 
         Console.WriteLine($"Acute Load  (7-day): {riskAssessor.GetAcuteLoad()}");
         Console.WriteLine($"Chronic Load (28-day): {riskAssessor.GetChronicLoad()}");
-        Console.WriteLine($"ACWR: {ACWR}\n");
+        Console.WriteLine($"ACWR: {acwr}\n");
 
         riskAssessor.AssessRisk();
 
@@ -70,10 +70,10 @@ class Program
 
 
     }
-    public static List<Exercise> ImportCSV(string _pathToCSV)
+    public static List<Exercise> ImportCSV(string pathToCSV)
     {
-        Console.WriteLine($"Importing CSV from {_pathToCSV}...");
-        using var reader = new StreamReader(_pathToCSV);
+        Console.WriteLine($"Importing CSV from {pathToCSV}...");
+        using var reader = new StreamReader(pathToCSV);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
         // prep the header and init the list of Exercise object

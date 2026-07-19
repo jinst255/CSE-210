@@ -1,7 +1,7 @@
 class AnomalyDetector
 {
     // I decided to use a tuple here to store both the date and the load for any given anomaly
-    List<(DateTime, double)> anomalySpikes = new List<(DateTime, double)>(); 
+    List<(DateTime, double)> _anomalySpikes = new List<(DateTime, double)>(); 
     double _mean;
     double _stdDev;
     /*
@@ -53,25 +53,25 @@ class AnomalyDetector
         {
             if (Math.Abs(load - _mean) > 2 * _stdDev)
             {
-                anomalySpikes.Add((date, load));
+                _anomalySpikes.Add((date, load));
             }
         }
         
     }
     public List<(DateTime, double)> GetAnomalies()
     {
-        return anomalySpikes;
+        return _anomalySpikes;
     }
     public void PrintAnomalyReport()
     {
-        if (anomalySpikes.Count == 0)
+        if (_anomalySpikes.Count == 0)
         {
             Console.WriteLine("- No anomalies detected.");
         }
         else
         {
-            Console.WriteLine($"Total anomalies detected: {anomalySpikes.Count}");
-            foreach ((DateTime date, double load) in anomalySpikes)
+            Console.WriteLine($"Total anomalies detected: {_anomalySpikes.Count}");
+            foreach ((DateTime date, double load) in _anomalySpikes)
             {
                 Console.WriteLine($"- Date: {date.ToShortDateString()}\n  Load: {load}\n\n");
             }
